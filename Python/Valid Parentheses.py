@@ -6,25 +6,6 @@
 class Solution:
     # @return a boolean
 	def isValid(self, s):
-		if len(s)%2 != 0:
-			return False
-		if len(s) == 0:
-			return True
-		mid = len(s)/2
-		lmid = mid - 1
-		while mid != len(s):
-			if self.isValidPair(s[lmid],s[mid]) == False:
-				return False
-			mid = mid + 1
-			lmid = lmid -1
-	def isValidPair(self,s1,s2):
-		if s == "(":return ")"
-		if s == "[":return "]"
-		if s == "{":return "}"
-		return s
-class Solution:
-    # @return a boolean
-	def isValid(self, s):
 		if len(s) == 0:
 			return False
 		stack = []
