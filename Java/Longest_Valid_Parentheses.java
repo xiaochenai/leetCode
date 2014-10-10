@@ -6,15 +6,24 @@ class Longest_Valid_Parentheses{
         int max = 0;
         while(i<s.length()){
         	if(s.charAt(i) == ')'){
-        		if(!stack.isEmpty()){
-        			if(s.charAt(stack.peek()) == '('){
+        		int index = stack.peek();
+        		if(index != -1){
+        			if(s.charAt(index) == '('){
         				stack.pop();
+        				max = Math.max(max,i-stack.peek());
         			}
         			else{
         				stack.push(i);
         			}
         		}
+        		//is stack is empty push ')' into stack
+        		else
+        			stack.push(i);
         	}
+        	else
+        		stack.push(i);
+        	i++;
         }
+        return max;
     }
 }
