@@ -11,7 +11,7 @@ class Binary Tree Maximum Path Sum{
     	int right = findPathSum(root.right);
     	int cross = left + right + root.val;
     	int non_cross = Math.max(root.val,root.val+Math.max(left,right));
-    	maxV = Math.max(cross,non_cross);
+    	maxV = Math.max(maxV,Math.max(cross,non_cross));
     	return non_cross;
     }
 }

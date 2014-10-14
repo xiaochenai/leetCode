@@ -1,33 +1,34 @@
-public class Solution {
-	private List<String> res = new LinkedList<String>();
-    public List<String> restoreIpAddresses(String s) {
-        if (s.length()<4 || s.length()>12){
-			return res;
-		}
-		dfs("",1,s);
-		return res;
+class Restore IP Addresses{
+	public List<String> restoreIpAddresses(String s) {
+        ArrayList<String> res = new ArrayList<String>();
+        if (s.length() < 4 || s.length() > 12)
+            return res;
+        genValidIp(s,res,"",1);
+        return res;
+
     }
-	private void dfs(String temp, int round, String s){
-		if (round == 4){
-			if (isValidIP(s)){
-				temp = temp+s;
-				res.add(temp);
-				return;
-			}
-		}
-		for(int i=1;i<4 && i<s.length();i++){
-			if (isValidIP(s.substring(0,i))){
-				dfs(temp+s.substring(0,i)+".",round+1,s.substring(i));
-			}
-		}
-		
-	}
-	private boolean isValidIP(String s){
-		if (s.charAt(0) == '0')
-			return (s.equals("0"));
-		if (Integer.valueOf(s)>=0 && Integer.valueOf(s)<=255)
-			return true;
-		else
-			return false;
-	}
+    private void genValidIp(String s,ArrayList<String> res, String curr,int sec){
+    	if(sec == 4){
+    		if(isValid(s)){
+    			res.add(curr+s);
+    		}
+    		return;
+    	}
+    	for(int i=1;i<=3 && i<=s.length();i++){
+    		if(isValid(s.substring(0,i))){
+    			String temp = curr==""?s.substring(0,i)+".":curr+s.substring(0,i)+".";
+    			genValidIp(s.substring(i),res,temp,sec+1);
+    		}
+    	}
+    }
+    private boolean isValid(String s){
+        if(s == null || s.length() == 0)
+    		return false;
+    	if(s.charAt(0) == '0')
+    		return (s.length() == 1);
+    	int ip = Integer.parseInt(s);
+    	if(ip>=0 && ip <= 255)
+    		return true;
+    	return false;
+    }
 }
