@@ -17,7 +17,7 @@ public class ReverseLinkedList{
 	public void Method2(ListNode head,ListNode end){
 		ListNode dummy = new ListNode(0);
 		dummy.next = head;
-		Method1(dummy,end);
+		Method1(dummy.end);
 		return dummy.next;
 	}
 	public static void main(String[] args){

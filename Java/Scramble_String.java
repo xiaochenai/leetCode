@@ -46,6 +46,10 @@ class Scramble_String{
     				scramble[0][i][j] = true;
     		}
     	}
+        for(int k=2;k<=L;k++){
+            for(int i=L-k;i>=0;i--){
+                for(int j=L-k;j>=0;j--){
+                    
     	for(int k=2;k<=L;k++){
             //change the order
     		for(int i=L-k;i>=0;i--){

@@ -1,28 +1,23 @@
-public class Solution {
-    public String simplifyPath(String path) {
-        if (path.length()==0)
-			return path;
-		String[] splits = path.split("/");
-		LinkedList<String> stack = new LinkedList<String>();
-		for(String s:splits){
-			if(s.length()==0 || s.equals("."))
-				continue;
-			else if(s.equals("..")){
-				if (!stack.isEmpty())
-					stack.pop();
-			} 
-			else{
-				stack.push(s);
-			}
-		}
-		if(stack.isEmpty()){  
-            stack.push("");  
-        }  
-        String ret = "";  
-        while(!stack.isEmpty()){  
-            ret += "/" + stack.removeLast();  
-        }  
-          
-        return ret;  
+class Simplify Path{
+	public String simplifyPath(String path) {
+        LinkedList<String> stack = new LinkedList<String>();
+        String[] paths = path.split("/");
+        for(String s:paths){
+        	if(s.equals("..")){
+        		if(!stack.isEmpty())
+        			stack.pop();
+        	}
+        	else if(s.equals(".")|| s.equals(""))
+        		continue;
+        	else
+        		stack.push(s);
+        }
+        String res = "";
+        if(stack.isEmpty())
+        	return "/";
+        while(!stack.isEmpty()){
+        	res = "/" + stack.pop() + res;
+        }
+        return res;
     }
 }

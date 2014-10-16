@@ -14,5 +14,6 @@ class Remove Duplicates from Sorted List{
         	}
         	curr.next = curr.next.next;
         }
+        return dummy.next;
     }
 }
