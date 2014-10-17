@@ -10,22 +10,34 @@ class Search in Rotated Sorted Array{
         		return mid;
         	//mid > left
         	else if(A[mid] > A[l]){
-        		if(A[mid] > target && target <= A[r])
+                if(A[mid] > target && target >= A[l])
+                    r = mid - 1;
+                else if(A[mid] > target && target < A[l])
+                    l = mid + 1;
+                else if(A[mid] < target && target >= A[l])
+                    l = mid + 1;
+        		/*if(A[mid] > target && target <= A[r])
         			l = mid + 1;
         		else if(A[mid] > target && target >= A[l])
         			r = mid - 1;
         		else if(A[mid] < target && target >= A[l])
-        			l = mid + 1;
+        			l = mid + 1;*/
 
         	}
         	//mid < left
-        	else if(A[mid] < A[i]){
-        		if(A[mid] < target && target <= A[r])
+        	else if(A[mid] < A[l]){
+                if(A[mid] < target && target <= A[r])
+                    l = mid + 1;
+                else if(A[mid] < target && target > A[r])
+                    r = mid - 1;
+                else if(A[mid] > target && target <= A[r])
+                    r= mid - 1;
+        		/*if(A[mid] < target && target <= A[r])
         			l = mid + 1;
         		else if(A[mid] < target && target >= A[l])
         			r = mid - 1;
         		else if(A[mid] > target && target <= A[r])
-        			r= mid - 1;
+        			r= mid - 1;*/
         	}
         	else
         		l++;

@@ -10,6 +10,25 @@ class Valid Number{
 									   {-1,           6,          -1,     -1        -1          7},//e/E(5)
 									   {-1,           6,          -1,      4,       -1,         -1},//e/E with number in back(6)
 									   {-1,           6,          -1,      -1,       -1,         -1},//e/E with sign in back
-									   {-1,           1,          2,      -1,       -1,          -1}//sign};
+									   {-1,           1,          2,      -1,       -1,          -1}};//sign}
+		int state = 0;
+        for(int i=0;i<s.length();i++){
+            char c = s.charAt(i);
+            int input = 0;
+            if(c == ' ')
+                input = 3;
+            else if(c == '.')
+                input = 2;
+            else if(c == 'e' || c == 'E')
+                input = 4;
+            else if(c == '+' || c == '-')
+                input = 5;
+            else if(c >= '0' && c <= '9')
+                input = 1;
+            state = transitionTable[state][input];
+            if(state == -1)
+                return false;
+        }
+        return state == 6 || state == 1 || state == 5 || state == 7;							
 	}
 }

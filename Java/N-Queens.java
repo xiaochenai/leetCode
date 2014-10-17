@@ -1,43 +1,42 @@
 class N-Queens{
-	//dfs
-	//when a dfs is valid generate a chess board
+	private ArrayList<String[]> res = new ArrayList<String[]>();
 	public ArrayList<String[]> solveNQueens(int n) {
-        ArrayList<String[]> res = new ArrayList<String[]>();
-        int[] colforRow = new int[n];
-        placeQueen(res,0,colforRow,n);
+        int[] colForRow = new int[n];
+        placeQueen(n,0,colForRow);
         return res;
-
     }
-    private void placeQueen(ArrayList<String[]> res, int row, int[] colforRow,int n){
+    private void placeQueen(int n, int row, int[] colForRow){
     	if(row == n){
-    		genBoard(res,colforRow,n);
+    		genBoard(colForRow);
     		return;
     	}
-    	for(int i=0;i<n;i++){
-    		colforRow[row] = i;
-    		if(check(row,colforRow))
-    			placeQueen(res,row+1,colforRow,n);
+    	for(int i=1;i<=n;i++){
+    		colForRow[row] = i;
+    		if(isValid(colForRow,row))
+    			placeQueen(n,row+1,colForRow);
+
     	}
     }
-    private boolean check(int row, int[] colforRow){
+    private boolean isValid(int[] colForRow, int row){
     	for(int i=0;i<row;i++){
-    		if(colforRow[i] == colforRow[row] || (Math.abs(colforRow[i]-colforRow[row]) == row-i))
+    		if(colForRow[i] == colForRow[row] || Math.abs(colForRow[i]-colForRow[row]) == row-i){
     			return false;
+    		}
     	}
     	return true;
     }
-    private void genBoard(ArrayList<String[]> res, int[] colforRow,int n){
-    	String[] fills = new String[n];
+    private void genBoard(int[] colForRow){
+    	String[] board = new String[n];
     	for(int i=0;i<n;i++){
-    		String fill = "";
+    		String s = "";
     		for(int j=0;j<n;j++){
-    			if(colforRow[i] == j)
-    				fill = fill + "Q";
+    			if(colForRow[i] == (j+1))
+    				s = s + "Q";
     			else
-    				fill = fill + ".";
+    				s= s + '.';
     		}
-    		fills[i] = fill;
+    		board[i] = s;
     	}
-    	res.add(fills);
+    	res.add(board);
     }
 }
