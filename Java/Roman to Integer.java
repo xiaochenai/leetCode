@@ -1,5 +1,5 @@
-public class Solution {
-    private int c2n(char c){
+class Roman to Integer{
+	private int c2n(char c){
 		switch(c){
 			case 'I': return 1;  
 			case 'V': return 5;  
