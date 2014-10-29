@@ -15,21 +15,21 @@ class Binary_Tree_Postorder_Traversal{
 	private void iterative(ArrayList<Integer> res, TreeNode root){
 		if(root == null)
 			return;
-		LinkedList<TreeNode> queue = new LinkedList<Integer>();
+		LinkedList<TreeNode> stack = new LinkedList<Integer>();
 		TreeNode lastVisited = null;
-		while(!queue.isEmpty()||root != null){
+		while(!stack.isEmpty()||root != null){
 			if(root != null){
-				queue.offer(root);
+				stack.push(root);
 				root = root.left;
 			}
 			else{
-				TreeNode temp = queue.peek();
+				TreeNode temp = stack.peek();
 				if(temp.right != null && temp.right != lastVisited){
 					root = temp.right;
 				}
 				else{
 					res.add(temp.val);
-					queue.pop();
+					stack.pop();
 					lastVisited = temp;
 				}
 			}

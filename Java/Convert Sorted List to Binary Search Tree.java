@@ -11,7 +11,7 @@ class Convert Sorted List to Binary Search Tree{
     	ListNode c3 = ListNode(0);
     	c3.next = head;
     	while(c2 != null && c2.next != null){
-    		c2 = c2.next;
+    		c2 = c2.next.next;
     		c1 = c1.next;
     		c3 = c3.next;
     	}

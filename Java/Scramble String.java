@@ -52,7 +52,8 @@ class Scramble String{
     				scramble[0][i][j] = true;
     		}
     	}
-
+        //j+k-1-x + 1 = m
+        //x = j+k-m
     	for(int k=2;k<=L;k++){
             //change the order
     		for(int i=L-k;i>=0;i--){

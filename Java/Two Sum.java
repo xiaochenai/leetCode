@@ -1,5 +1,6 @@
 class Two Sum{
 	public int[] twoSum(int[] numbers, int target) {
+		//<value,index>
 	HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
 	int[] result = new int[2];
  

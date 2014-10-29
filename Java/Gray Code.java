@@ -23,6 +23,30 @@ class Gray Code{
         }
         return res;
     }
+    private ArrayList<Integer> recursiveSolution(int n){
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        if(n==0){
+            res.add(0);
+            return res;
+        }
+        ArrayList<Integer> preRes = recursiveSolution(n-1);
+        res.addAll(preRes);
+        for(int i=preRes.size()-1;i>=0;i++){
+            res.add(preRes.get(i)+(1<<(n-1)));
+        }
+    }
+    private ArrayList<Integer> iterativeSolution(int n){
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        res.add(0);
+        for(int i=0;i<n;i++){
+            int currLen = res.size();
+            int highestBit = i<<i;
+            for(int j=currLen-1;j>=0;j--){
+                res.add(res.get(j)+highestBit);
+            }
+        }
+        return res;
+    }
     private ArrayList<Integer> iterativeSolution(int n){
         ArrayList<Integer> res = new ArrayList<Integer>();
         res.add(0);
